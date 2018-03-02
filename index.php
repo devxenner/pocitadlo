@@ -1,34 +1,26 @@
 <?php include_once '_partials/header.php'?>
 
 <?php
+	// Zkontroluji, zda přišel GET request na stránku.
 	if ($_SERVER['REQUEST_METHOD'] === 'GET') {
+		// Pokud přišel GET request, vytáhnu si z DB současný počet zhlídnutí stránky
 		$query = $db->query('SELECT total_count FROM visitors');
+
+		// Uložím si celkový počet do proměnné result jako objekt
 		$result = $query->fetch(PDO::FETCH_OBJ);
 
+		// Navýším hodnotu celkového počtu zhlídnutí
 		$total_count = ++$result->total_count;
+
+		// Vložím do DB navýšený počet
 		$query = $db->query("UPDATE visitors 
 							SET total_count = '$total_count'");
-
-
-
 	}
-
-
-
-	//$query = $db->prepare('UPDATE visitors SET total_count :count');
-	//$query->execute(['count' => $count])
-
-	//$query = $db->query('INSERT INTO visitors
-	//					 VALUES ')
-
-	//$query = $db->query('SELECT total_count FROM visitors');
-	//$result = $query->fetch(PDO::FETCH_OBJ);
-
 ?>
 
 	<div class="visitors">
-		<h1>Pocitadlo</h1>
-		<h2>Celkovy pocet</h2>
+		<h1>Počítadlo</h1>
+		<h2>Celkový počet zhlédnutí stránky</h2>
 		<p class="visitors-count">
 			<?php
 				echo $result->total_count;
