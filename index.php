@@ -1,4 +1,4 @@
-<?php include_once '_partials/header.php'?>
+<?php include_once 'partials/header.php' ?>
 
 <?php
 	// Zkontroluji, zda přišel GET request na stránku.
@@ -28,4 +28,4 @@
 		</p>
 	</div>
 
-<?php include_once '_partials/footer.php'?>
+<?php include_once 'partials/footer.php' ?>

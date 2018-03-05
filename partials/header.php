@@ -1,4 +1,4 @@
-<?php require_once '_inc/config.php'; ?>
+<?php require_once 'inc/config.php'; ?>
 
 <!DOCTYPE html>
 <html>
