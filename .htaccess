@@ -1,0 +1,5 @@
+# Turn on URL Rewriting
+RewriteEngine On
+
+# Protect application and system files from being viewed
+RewriteRule ^(inc|partials) - [F,L]
