@@ -1,16 +1,20 @@
-<?php require_once 'inc/config.php'; ?>
+<?php
 
-<?php include_once 'partials/header.php'; ?>
 
-	<div class="visitors">
-		<h1>Ahoj. Vítám tě!</h1>
-		<h2>Počítadlo má několik verzí, vyber si</h2>
+require_once(__DIR__.'/inc/functions.php');
 
-		<div class="visitors-choose">
-			<a href="<?php echo URLROOT; ?>/pocitadlo/type-sessions.php" class="btn btn-primary">Sessions</a>
-			<a href="<?php echo URLROOT; ?>/pocitadlo/type-cookies.php" class="btn btn-primary">Cookies</a>
-			<a href="<?php echo URLROOT; ?>/pocitadlo/type-db.php" class="btn btn-primary">Database</a>
-		</div>
-	</div>
+$configuration = require(__DIR__.'/inc/config.php');
 
-<?php include_once 'partials/footer.php'; ?>
+initialize($configuration);
+
+echo str_replace(
+    array(
+	'{%URLROOT%}',
+    ),
+    array(
+	URLROOT,
+    ),
+    file_get_contents(__DIR__.'/index.html')
+);
+exit(0);
+
